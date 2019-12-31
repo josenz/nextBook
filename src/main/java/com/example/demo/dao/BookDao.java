@@ -21,5 +21,6 @@ public interface BookDao {
 
     int deleteBookById(UUID id);
 
+    int updateBookById(UUID id, Book book);
 
 }

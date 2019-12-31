@@ -41,4 +41,17 @@ public class FakeBookDataAccessService implements BookDao {
         return 1;
     }
 
+    public int updateBookById(UUID id, Book book) {
+        return selectBookById(id)
+                .map(b -> {
+                  int indexBookTobeUpdate = DB.indexOf(b);
+                  if(indexBookTobeUpdate >= 0) {
+                      DB.set(indexBookTobeUpdate, new Book(id, book.getTitle(), book.getIsbn(), book.getPrice()));
+                      return 1;
+                  }
+                  return 0;
+                })
+                .orElse(0);
+    }
+
 }

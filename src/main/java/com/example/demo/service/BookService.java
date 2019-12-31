@@ -36,4 +36,8 @@ public class BookService {
     public int deleteBookById(UUID id) {
         return bookDao.deleteBookById(id);
     }
+
+    public int updateBookById(UUID id, Book book) {
+        return bookDao.updateBookById(id, book);
+    }
 }
