@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository("fakeDao")
@@ -22,4 +23,12 @@ public class FakeBookDataAccessService implements BookDao {
     public List<Book> selectAllBooks() {
         return DB;
     }
+
+    @Override
+    public Optional<Book> selectBookById(UUID id) {
+        return DB.stream()
+                .filter(person -> person.getId().equals(id))
+                .findFirst();
+    }
+
 }

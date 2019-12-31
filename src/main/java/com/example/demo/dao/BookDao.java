@@ -3,6 +3,7 @@ package com.example.demo.dao;
 import com.example.demo.model.Book;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface BookDao {
@@ -15,4 +16,8 @@ public interface BookDao {
     }
 
     List<Book> selectAllBooks();
+
+    Optional<Book> selectBookById(UUID id);
+
+
 }
