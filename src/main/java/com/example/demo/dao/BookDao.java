@@ -19,5 +19,7 @@ public interface BookDao {
 
     Optional<Book> selectBookById(UUID id);
 
+    int deleteBookById(UUID id);
+
 
 }

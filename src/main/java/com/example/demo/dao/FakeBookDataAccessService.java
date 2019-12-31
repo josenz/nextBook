@@ -31,4 +31,14 @@ public class FakeBookDataAccessService implements BookDao {
                 .findFirst();
     }
 
+    @Override
+    public int deleteBookById(UUID id) {
+        Optional<Book> bookToDelete = selectBookById(id);
+        if(bookToDelete.isEmpty()) {
+            return 0;
+        }
+        DB.remove(bookToDelete.get());
+        return 1;
+    }
+
 }

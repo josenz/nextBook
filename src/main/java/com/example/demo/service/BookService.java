@@ -32,4 +32,8 @@ public class BookService {
     public Optional<Book> getBookById(UUID id) {
         return bookDao.selectBookById(id);
     }
+
+    public int deleteBookById(UUID id) {
+        return bookDao.deleteBookById(id);
+    }
 }

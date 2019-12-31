@@ -34,4 +34,9 @@ public class BookController {
     public Optional<Book> getBookById(@PathVariable("id") UUID id) {
         return bookService.getBookById(id);
     }
+
+    @DeleteMapping(path = "{id}")
+    public int deleteBookById(@PathVariable("id") UUID id) {
+        return bookService.deleteBookById(id);
+    }
 }
