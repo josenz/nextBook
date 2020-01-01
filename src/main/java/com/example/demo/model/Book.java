@@ -12,10 +12,10 @@ public class Book {
     @NotBlank
     private final String title;
 
-    @NotBlank
+
     private final Integer isbn;
 
-    @NotBlank
+    
     private final Double price;
 
     public Book(@JsonProperty("id") UUID id,

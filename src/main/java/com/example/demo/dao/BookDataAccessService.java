@@ -21,7 +21,10 @@ public class BookDataAccessService implements BookDao {
 
     @Override
     public int insertBook(UUID id, Book book) {
-        return 0;
+        jdbcTemplate.update("INSERT INTO book(id, title, isbn, price) VALUES(?, ?, ?, ?)",
+                id, book.getTitle(), book.getIsbn(), book.getPrice()
+        );
+        return 1;
     }
 
 //    @Override
@@ -63,11 +66,20 @@ public class BookDataAccessService implements BookDao {
 
     @Override
     public int deleteBookById(UUID id) {
-        return 0;
+        final String sql = "DELETE FROM book WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+        return 1;
     }
 
     @Override
     public int updateBookById(UUID id, Book book) {
-        return 0;
+        final String sql = "UPDATE book SET title = ?, isbn = ?, price = ? WHERE id = ?";
+        jdbcTemplate.update(
+                sql,
+                book.getTitle(),
+                book.getIsbn(),
+                book.getPrice(),
+                id);
+        return 1;
     }
 }
