@@ -3,8 +3,10 @@ package com.example.demo.api;
 import com.example.demo.model.Book;
 import com.example.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,7 +23,7 @@ public class BookController {
     }
 
     @PostMapping
-    public void addBook(@RequestBody Book book) {
+    public void addBook(@Valid @NonNull @RequestBody Book book) {
         bookService.addBook(book);
     }
 
@@ -41,7 +43,7 @@ public class BookController {
     }
 
     @PutMapping(path = "{id}")
-    public int updateBookById(@PathVariable("id") UUID id, @RequestBody Book book) {
+    public int updateBookById(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Book book) {
         return bookService.updateBookById(id, book);
     }
 }
